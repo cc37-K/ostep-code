@@ -16,6 +16,7 @@ main(int argc, char *argv[])
         exit(1);
     } else if (rc == 0) {
 	// child: redirect standard output to a file
+	// The trick to close the stdout and the sys look for the lowest fd which is the new opened one
 	close(STDOUT_FILENO); 
 	open("./p4.output", O_CREAT|O_WRONLY|O_TRUNC, S_IRWXU);
 
